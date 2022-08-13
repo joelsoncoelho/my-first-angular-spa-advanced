@@ -1,0 +1,33 @@
+<div class="class">
+  <form>
+    <input type="text" [(ngModel)]="name" name="name" placeholder="Digite um nome" />
+ 
+    <input type="submit" value="Enviar"/>
+ 
+  </form>
+  <p>O nome é {{ name }}</p>
+
+  <h3>Two-way Binding</h3>
+
+<!-- <input type="text" (keyup)="keyUp($event)" placeholder="Digite seu nome"/>
+<br>
+<br>
+<label>Seu nome é: {{ nome }}</label> -->
+
+<!-- <input type="text" [ngModel]="nome" (ngModelChange)="nome = $event" placeholder="Digite seu nome"/>
+<br>
+<br>
+<label>Seu nome é: {{ nome }}</label> -->
+
+<!-- Forma reduzida da anterior -->
+<input type="text" [(ngModel)]="nome" placeholder="Digite seu nome"/>
+<br>
+<br>
+<label>Seu nome é: {{ nome }}</label>
+
+<br>
+<!-- Usando para modificar o .class-->
+<label [ngClass]="nome">Seu nome é: {{ nome }}</label>
+
+<br>
+</div>

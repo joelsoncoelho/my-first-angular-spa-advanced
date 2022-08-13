@@ -1,0 +1,30 @@
+<div class="class">
+  <h2>{{ 'Algum texto aqui!!' | uppercase }}</h2>
+  <h2>{{sameText | titlecase }}</h2>
+  <h2>{{today | date: 'fullDate'   }}</h2>
+  <div>
+    <!-- Indicando qual o formato desejado -->
+    {{today | date : 'dd/MM/yyyy HH:mm'}}
+    <!-- 23/04/2021 10:00 -->
+  </div>
+  <div>
+    <!-- Indicando qual o formato desejado -->
+    {{today | date : 'dd/MM/yyyy'}}
+    <!-- 23/04/2021 -->
+  </div>
+  <div>
+    <!-- Indicando qual o formato desejado -->
+    {{today | date : 'HH:mm'}}
+    <!-- 10:00 -->
+  </div>
+  <div>
+    {{today | date : 'dd MMM yyyy'}}
+    <!-- 23 Apr 2021 -->
+  
+    <!-- 
+         IMPORTANTE:
+         Veja que o mês está em inglês mas você entenderá
+         quando chegar no parâmetro locale
+    -->
+  </div>
+</div>

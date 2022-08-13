@@ -1,0 +1,14 @@
+<div class="class">
+  <p>
+    Emit Event
+  </p>
+  
+  <ul>
+    <li *ngFor="let f of recebeFamilia">
+      {{f.nome}} {{f.sobreNome}}
+    </li>
+  </ul>
+
+  <br>
+  <button class="btn btn-primary" (click)="feedback()">Emitir Resposta</button>
+</div>

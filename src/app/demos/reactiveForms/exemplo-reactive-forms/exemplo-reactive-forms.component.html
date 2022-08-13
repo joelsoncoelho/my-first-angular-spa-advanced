@@ -1,0 +1,85 @@
+<div class="container main-container">
+  <h4>Demo Cadastro</h4>
+  <hr />
+  <form novalidate (ngSubmit)="onSubmit()" [formGroup]='cadastroForm'>
+      <div class="form-horizontal">
+
+          <div class="form-group">
+              <label class="col-md-2 control-label" for="nome">Nome Completo</label>
+              <div class="col-md-10">
+                  <input class="form-control" id="nome" type="text" placeholder="Nome (requerido)" formControlName="nome" [ngClass]="{'is-invalid' : cadastroForm.get('nome')?.errors && (cadastroForm.get('nome')?.dirty || cadastroForm.get('nome')?.touched)}"/>
+                  <span class="text-danger" *ngIf="cadastroForm.get('nome')?.errors && (cadastroForm.get('nome')?.dirty || cadastroForm.get('nome')?.touched)">
+                    <p>Preencha o campo nome</p>
+                  </span>
+              </div>
+         </div>
+
+          <div class="form-group">
+            <label class="col-md-2 control-label">CPF</label>
+            <div class="col-md-10">
+                <input class="form-control" id="cpf" type="text" placeholder="CPF (requerido)" formControlName="cpf" [ngClass]="{'is-invalid' : cadastroForm.get('cpf')?.errors && (cadastroForm.get('cpf')?.dirty || cadastroForm.get('cpf')?.touched)}" />
+                <span class="text-danger" *ngIf="cadastroForm.get('cpf')?.errors?.['required'] && (cadastroForm.get('cpf')?.dirty || cadastroForm.get('cpf')?.touched)">
+                  <p>CPF é obrigatório.</p>
+                </span>
+              </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-2 control-label">E-mail</label>
+            <div class="col-md-10">
+                <input class="form-control" id="email" type="text" placeholder="E-mail (requerido)"  formControlName="email" [ngClass]="{'is-invalid' : cadastroForm.get('email')?.errors && (cadastroForm.get('email')?.dirty || cadastroForm.get('email')?.touched)}"/>
+                <span class="text-danger" *ngIf="cadastroForm.get('email')?.errors?.['required'] && (cadastroForm.get('email')?.dirty || cadastroForm.get('email')?.touched)">
+                  <p>Preencha o campo e-mail.</p>
+                </span>
+                <span class="text-danger" *ngIf="cadastroForm.get('email')?.errors?.['email'] && (cadastroForm.get('email')?.dirty || cadastroForm.get('email')?.touched)">
+                  <p>Digite um e-mail válido.</p>
+                </span>
+              </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-2 control-label">Senha</label>
+            <div class="col-md-10">
+                <input class="form-control" id="senha" type="password" placeholder="Senha (requerido)" formControlName="senha" [ngClass]="{'is-invalid' : cadastroForm.get('senha')?.errors && (cadastroForm.get('senha')?.dirty || cadastroForm.get('senha')?.touched)}"/>
+                <span class="text-danger" *ngIf="cadastroForm.get('senha')?.errors?.['required'] && (cadastroForm.get('senha')?.dirty || cadastroForm.get('senha')?.touched)">
+                  <p>Senha é obrigatória.</p>
+                </span>
+                <span class="text-danger" *ngIf="cadastroForm.get('senha')?.errors?.['minlength'] && (cadastroForm.get('senha')?.dirty || cadastroForm.get('senha')?.touched)">
+                  <p> Senha deve ter no mínimo 6 caracters.</p>
+                </span>
+                <span class="text-danger" *ngIf="cadastroForm.get('senha')?.errors?.['maxlength'] && (cadastroForm.get('senha')?.dirty || cadastroForm.get('senha')?.touched)">
+                  <p> Senha deve ter no máximo 12 caracters.</p>
+                </span>
+              </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-2 control-label">Confirme a Senha</label>
+            <div class="col-md-10">
+                <input class="form-control" id="senhaConfirmacao" type="password" placeholder="Confirme a Senha (requerido)" formControlName="senhaConfirmacao" [ngClass]="{'is-invalid' : cadastroForm.get('senhaConfirmacao')?.errors && (cadastroForm.get('senhaConfirmacao')?.dirty || cadastroForm.get('senhaConfirmacao')?.touched)}"/>
+                <span class="text-danger" *ngIf="cadastroForm.get('senhaConfirmacao')?.errors?.['required'] && (cadastroForm.get('senhaConfirmacao')?.dirty || cadastroForm.get('senhaConfirmacao')?.touched)">
+                  <p>Confirme sua senha.</p>
+                </span>
+              </div>
+        </div>
+
+          <div class="form-group">
+              <div class="col-md-4 col-md-offset-2">
+                  <span><button class="btn btn-success" id="Registrar" type="submit"  >Registrar</button></span>
+                  <button type="button" (click)="onReset()" class="btn btn-warning float-right">Reset</button>
+                </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-md-4 col-md-offset-2">
+                <p>Formulario valido: {{ cadastroForm.valid }}</p>
+                <p>Formulario Tocado: {{ cadastroForm.touched }}</p>
+                <p>Formulario Sujo: {{ cadastroForm.dirty }}</p><br>
+              <p>Formulario: {{ formResult }}</p> 
+            </div>
+        </div>
+         
+      </div>
+  </form>
+</div>
+
