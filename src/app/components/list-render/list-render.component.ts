@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Animal } from '../Animal';
+import { Animal, IAnimal } from '../Animal';
 import { ListService } from 'src/app/services/list.service';
+import { AnimalMapperService } from 'src/app/services/mappers/animal-mapper.service';
 
 @Component({
   selector: 'app-list-render',
@@ -11,28 +12,36 @@ export class ListRenderComponent implements OnInit {
 
   animalDetails: string = "";
 
-  animals: Animal[] = [];
+  animals: IAnimal[] = [];
 
-  constructor(private listService: ListService) {
+  constructor(
+    private listService: ListService,
+    private readonly animalMapper: AnimalMapperService,
+  ) {
     this.getAnimals();
    }
 
   ngOnInit(): void {
   }
 
-  showAge(animal: Animal): void {
-    this.animalDetails = `O pet ${animal.name} tem ${animal.age} anos!`; 
+  showAge(animal: IAnimal): void {
+    this.animalDetails = `O pet ${animal.nome} tem ${animal.idade} anos!`;
   }
 
-  removeAnimal(animal: Animal){
+  removeAnimal(animal: IAnimal){
     console.log('Removendo animal');
-    this.animals = this.animals.filter((a)=> animal.name !== a.name);
-    this.listService.remove(animal.id).subscribe();
-    
+    this.animals = this.animals.filter((a)=> animal.nome !== a.nome);
+    this.listService.remove(animal.cod).subscribe();
+
   }
 
   getAnimals(): void {
     this.listService.getAll().subscribe((animals) => (this.animals = animals))
   }
+
+  // addAnimal(animal: IAnimal): void {
+  //   const payload = this.animalMapper.mapTo(animal);
+  //   this.listService.add(payload)
+  // }
 
 }

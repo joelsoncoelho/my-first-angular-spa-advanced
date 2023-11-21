@@ -2,7 +2,7 @@
   <h2>Animais</h2>
   <ul>
     <li *ngFor="let animal of animals">
-      Nome: {{animal.name}} - Tipo: {{animal.type}}<br/>
+      Nome: {{animal.nome}} - Tipo: {{animal.tipo}}<br/>
       <button class="btn btn-primary" (click)="showAge(animal)">Show Age</button>
       <button class="btn btn-danger" (click)="removeAnimal(animal)">Excluir</button>
     </li>
